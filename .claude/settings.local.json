@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Espressif/**)",
+      "Bash(where idf.py)",
+      "Bash(ls -d /c/Espressif/ 2>/dev/null && ls /c/Espressif/ 2>/dev/null || ls -d /mnt/c/Espressif/ 2>/dev/null || echo \"Espressif dir not found\")",
+      "Read(//mnt/c/**)",
+      "Bash(export IDF_PATH=\"/c/Espressif\")",
+      "Bash(export PATH=\"/c/Espressif/tools/cmake/3.30.2/bin:/c/Espressif/tools/ninja/win:/c/Espressif/tools/riscv32-esp-elf/riscv32-esp-elf/bin:/c/Espressif/tools/python:$PATH\")",
+      "Bash(export RISCV_TOOLCHAIN=\"/c/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20260121/riscv32-esp-elf/bin\")",
+      "Bash(export CMAKE_BIN=\"/c/EsPressif/tools/cmake/3.30.2/bin\")",
+      "Bash(export NINJA_BIN=\"/c/Espressif/tools/ninja/1.12.1\")",
+      "Bash(export PYTHON_BIN=\"/c/Espressif/tools/python/v5.5.4\")",
+      "Bash(export PATH=\"/c/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20260121/riscv32-esp-elf/bin:/c/Espressif/tools/cmake/3.30.2/bin:/c/Espressif/tools/ninja/1.12.1:$PATH\")",
+      "Bash(/c/Espressif/tools/ninja/1.12.1/ninja.exe -j1)",
+      "Bash(find /c/esp/v5.5.4/esp-idf/components/bt -name \"esp_bt.h\" 2>/dev/null)",
+      "Read(//c/esp/v5.5.4/esp-idf/components/bt/**)",
+      "Bash(find /c/esp/v5.5.4/esp-idf/examples/bluetooth -name \"*.c\" 2>/dev/null | head -20)",
+      "Read(//c/esp/v5.5.4/esp-idf/examples/bluetooth/**)"
+    ]
+  }
+}
