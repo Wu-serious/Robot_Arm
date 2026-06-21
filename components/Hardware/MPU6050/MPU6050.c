@@ -289,6 +289,7 @@ esp_err_t MPU6050_ReadID(uint8_t dev_addr, uint8_t *id)
 
 // 静态变量用于传感器融合
 static float s_pitch = 0.0f;  // 当前俯仰角
+static float s_roll = 0.0f;   // 当前横滚角
 static TickType_t s_last_time = 0;  // 上一次更新时间
 
 /**
@@ -316,29 +317,43 @@ esp_err_t MPU6050_FuseData(const mpu6050_data_t *raw_data, mpu6050_attitude_t *a
     }
     s_last_time = current_time;
 
-    // 从加速度计计算角度（X轴为pitch，左右倾斜）
+    // 从加速度计计算角度
+    // pitch: X轴倾斜，使用Y和Z加速度计算
     float accel_pitch = atan2(raw_data->accel_x, sqrt(raw_data->accel_y * raw_data->accel_y + raw_data->accel_z * raw_data->accel_z)) * (180.0f / 3.1415926535f);
+    // roll: Y轴倾斜，使用X和Z加速度计算
+    float accel_roll = atan2(raw_data->accel_y, sqrt(raw_data->accel_x * raw_data->accel_x + raw_data->accel_z * raw_data->accel_z)) * (180.0f / 3.1415926535f);
 
     // 互补滤波权重系数
     // alpha越接近1，越信任陀螺仪；越接近0，越信任加速度计
-    float alpha = 0.98f;
+    // 降低alpha值，增加加速度计权重以减少漂移
+    float alpha = 0.99f;
 
     if (dt > 0.0f)
     {
         // 使用陀螺仪积分更新角度
         s_pitch += raw_data->gyro_x * dt;
+        s_roll += raw_data->gyro_y * dt;
 
         // 融合加速度计数据（消除漂移）
         s_pitch = alpha * s_pitch + (1.0f - alpha) * accel_pitch;
+        s_roll = alpha * s_roll + (1.0f - alpha) * accel_roll;
+
+        // 角度限幅，防止累积误差过大
+        if (s_pitch > 90.0f) s_pitch = 90.0f;
+        if (s_pitch < -90.0f) s_pitch = -90.0f;
+        if (s_roll > 180.0f) s_roll = 180.0f;
+        if (s_roll < -180.0f) s_roll = -180.0f;
     }
     else
     {
         // 首次初始化，使用加速度计数据
         s_pitch = accel_pitch;
+        s_roll = accel_roll;
     }
 
     // 设置输出
     attitude->pitch = s_pitch;
+    attitude->roll = s_roll;
 
     return ESP_OK;
 }

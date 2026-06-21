@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"C:\\\\\\\\Users\\\\\\\\JC\\\\\\\\.espressif\\\\\\\\python_env\\\\\\\\idf5.5_py3.14_env\\\\\\\\Scripts\\\\\\\\python.exe\")",
+      "Bash(\"C:\\\\\\\\Users\\\\\\\\JC\\\\\\\\.espressif\\\\\\\\python_env\\\\\\\\idf5.5_py3.14_env\\\\\\\\Scripts\\\\\\\\python.exe\" -c \"import sys; sys.path.insert\\(0, 'C:/esp/v5.5.4/esp-idf/tools'\\); from kconfig_new import kconfig; print\\('kconfig module found'\\)\")"
+    ]
+  }
+}

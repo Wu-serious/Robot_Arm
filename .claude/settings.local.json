@@ -16,7 +16,18 @@
       "Bash(find /c/esp/v5.5.4/esp-idf/components/bt -name \"esp_bt.h\" 2>/dev/null)",
       "Read(//c/esp/v5.5.4/esp-idf/components/bt/**)",
       "Bash(find /c/esp/v5.5.4/esp-idf/examples/bluetooth -name \"*.c\" 2>/dev/null | head -20)",
-      "Read(//c/esp/v5.5.4/esp-idf/examples/bluetooth/**)"
+      "Read(//c/esp/v5.5.4/esp-idf/examples/bluetooth/**)",
+      "Bash(ls /c/esp/v5.5.4/esp-idf/export.sh 2>/dev/null && echo \"Found export.sh\" || echo \"No export.sh\")",
+      "Read(//c/esp/v5.5.4/esp-idf/**)",
+      "Bash(py -c \"import sys; print\\(sys.executable\\)\")",
+      "Read(//c/Users/JC/.espressif/python_env/idf5.5_py3.14_env/Scripts/**)",
+      "Read(//c/Users/JC/.espressif/python_env/**)",
+      "Bash(ls \"C:\\\\\\\\esp\\\\\\\\v5.5.4\\\\\\\\esp-idf\\\\\\\\tools\\\\\\\\kconfig_new\\\\\\\\\")",
+      "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"New-Item -ItemType Junction -Path 'd:\\\\desktop\\\\Eproject\\\\Servo_host\\\\slave\\\\main\\\\common' -Target 'd:\\\\desktop\\\\Eproject\\\\Servo_host\\\\managed_components\\\\espressif__esp_hosted\\\\common' -Force 2>&1\")",
+      "WebSearch",
+      "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"& { . 'C:\\\\esp\\\\v5.5.4\\\\esp-idf\\\\export.ps1' 2>&1 | Out-Null; idf.py --version 2>&1 }\")",
+      "Bash(cmd.exe /c \"C:\\\\esp\\\\v5.5.4\\\\esp-idf\\\\export.bat > NUL 2>&1 && cd /d d:\\\\desktop\\\\Eproject\\\\Servo_host && idf.py reconfigure 2>&1 && idf.py build 2>&1\")",
+      "Bash(\"C:\\\\\\\\Users\\\\\\\\JC\\\\\\\\.espressif\\\\\\\\python_env\\\\\\\\idf5.5_py3.14_env\\\\\\\\Scripts\\\\\\\\python.exe\" \"C:\\\\\\\\esp\\\\\\\\v5.5.4\\\\\\\\esp-idf\\\\\\\\tools\\\\\\\\idf.py\" --help)"
     ]
   }
 }
