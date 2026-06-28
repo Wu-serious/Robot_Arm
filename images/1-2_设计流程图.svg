@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 580" font-family="'Microsoft YaHei','SimHei','PingFang SC',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#333"/></marker>
+  </defs>
+
+  <!-- Phase 1: Requirement -->
+  <rect x="280" y="50" width="240" height="60" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="400" y="72" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e40af">1. 需求分析</text>
+  <text x="400" y="90" text-anchor="middle" font-size="9" fill="#3b82f6">行动不便人群取物需求</text>
+  <text x="400" y="105" text-anchor="middle" font-size="9" fill="#3b82f6">体感遥控为核心交互</text>
+
+  <line x1="400" y1="110" x2="400" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 2: Architecture -->
+  <rect x="280" y="130" width="240" height="60" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="400" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">2. 架构设计</text>
+  <text x="400" y="170" text-anchor="middle" font-size="9" fill="#b45309">双芯异构 P4+C5</text>
+  <text x="400" y="185" text-anchor="middle" font-size="9" fill="#b45309">三层PID闭环</text>
+
+  <line x1="400" y1="190" x2="400" y2="210" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Split -->
+  <line x1="400" y1="210" x2="220" y2="210" stroke="#333" stroke-width="2"/>
+  <line x1="400" y1="210" x2="580" y2="210" stroke="#333" stroke-width="2"/>
+  <line x1="220" y1="210" x2="220" y2="230" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="580" y1="210" x2="580" y2="230" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 3: Hardware (left) -->
+  <rect x="100" y="230" width="240" height="55" rx="8" fill="#d1fae5" stroke="#16a34a" stroke-width="2"/>
+  <text x="220" y="250" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">3. 硬件选型与搭建</text>
+  <text x="220" y="268" text-anchor="middle" font-size="9" fill="#047857">MG996R×5 + PCA9685 + MPU6050</text>
+  <text x="220" y="283" text-anchor="middle" font-size="9" fill="#047857">I2C总线 / SDIO双芯连接</text>
+
+  <line x1="220" y1="285" x2="220" y2="305" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 4: Software (right) -->
+  <rect x="460" y="230" width="240" height="55" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="580" y="250" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b21b6">4. 软件分层开发</text>
+  <text x="580" y="268" text-anchor="middle" font-size="9" fill="#4338ca">驱动层→中间件→通信层→应用层</text>
+  <text x="580" y="283" text-anchor="middle" font-size="9" fill="#4338ca">运动学/PID/WebServer</text>
+
+  <line x1="580" y1="285" x2="580" y2="305" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Merge -->
+  <line x1="220" y1="305" x2="400" y2="305" stroke="#333" stroke-width="2"/>
+  <line x1="580" y1="305" x2="400" y2="305" stroke="#333" stroke-width="2"/>
+  <line x1="400" y1="305" x2="400" y2="325" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 5: Debug -->
+  <rect x="280" y="325" width="240" height="55" rx="8" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="400" y="345" text-anchor="middle" font-size="12" font-weight="bold" fill="#9d174d">5. 联调测试</text>
+  <text x="400" y="363" text-anchor="middle" font-size="9" fill="#be185d">PID整定 / 传感器融合 / 通信冗余</text>
+
+  <line x1="400" y1="380" x2="400" y2="400" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 6: Optimize -->
+  <rect x="280" y="400" width="240" height="55" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="400" y="420" text-anchor="middle" font-size="12" font-weight="bold" fill="#dc2626">6. 优化迭代</text>
+  <text x="400" y="438" text-anchor="middle" font-size="9" fill="#b91c1c">Δ-limiter / 死区过滤 / EMA滤波</text>
+
+  <!-- Feedback arrow from Phase 6 bottom-right to Phase 4 bottom side -->
+  <line x1="520" y1="415" x2="600" y2="285" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+  <text x="610" y="360" font-size="9" fill="#ef4444">发现问题 → 返回调整</text>
+
+  <!-- Output -->
+  <line x1="400" y1="455" x2="400" y2="475" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="310" y="475" width="180" height="36" rx="18" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="400" y="498" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">体感遥控机械臂系统</text>
+</svg>

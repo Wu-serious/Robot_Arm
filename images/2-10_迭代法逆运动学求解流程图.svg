@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 960" font-family="'Microsoft YaHei','SimHei','PingFang SC',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#333"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/></marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/></marker>
+  </defs>
+
+  <!-- Start -->
+  <rect x="330" y="45" width="140" height="36" rx="18" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="400" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3">开始</text>
+
+  <line x1="400" y1="81" x2="400" y2="105" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Init -->
+  <rect x="280" y="105" width="240" height="40" rx="4" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="400" y="123" text-anchor="middle" font-size="11" fill="#1e40af">初始化: θ = [90°, 90°, 90°, 90°], 目标 (Xt, Yt, Zt)</text>
+
+  <line x1="400" y1="145" x2="400" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Iteration start -->
+  <rect x="310" y="170" width="180" height="40" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="400" y="188" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">迭代循环</text>
+  <text x="400" y="205" text-anchor="middle" font-size="10" fill="#666">k = 0, 1, 2, ..., max_iter</text>
+
+  <line x1="400" y1="210" x2="400" y2="235" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- FK -->
+  <rect x="280" y="235" width="240" height="40" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="400" y="253" text-anchor="middle" font-size="11" fill="#92400e">正运动学: p = FK(θ) → (Xk, Yk, Zk)</text>
+
+  <line x1="400" y1="275" x2="400" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Error -->
+  <rect x="280" y="300" width="240" height="45" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="400" y="318" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">误差 e = [Xt-Xk, Yt-Yk, Zt-Zk]ᵀ</text>
+  <text x="400" y="336" text-anchor="middle" font-size="10" fill="#666">维度: 3×1</text>
+
+  <line x1="400" y1="345" x2="400" y2="370" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Convergence check -->
+  <rect x="310" y="370" width="180" height="40" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="400" y="388" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626">&#x2016;e&#x2016; &lt; 容差?</text>
+
+  <line x1="400" y1="410" x2="400" y2="435" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="410" y="425" font-size="10" fill="#22c55e" font-weight="bold">是</text>
+
+  <!-- "否" branch: solid line right from convergence check, dashed line goes down, arrow points to iteration loop right edge center -->
+  <!-- From convergence check right edge (490,390) → right to 550 → down to iteration loop right edge center (490,190) -->
+  <line x1="490" y1="390" x2="550" y2="390" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="555" y="394" font-size="10" fill="#ef4444" font-weight="bold">否</text>
+  <line x1="550" y1="390" x2="550" y2="190" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="8,5"/>
+  <line x1="550" y1="190" x2="490" y2="190" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="8,5" marker-end="url(#arrow-red)"/>
+  <text x="565" y="195" font-size="10" fill="#ef4444">返回迭代循环</text>
+
+  <!-- Converged -->
+  <rect x="310" y="435" width="180" height="40" rx="4" fill="#d1fae5" stroke="#16a34a" stroke-width="2"/>
+  <text x="400" y="453" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">收敛! 返回 θ</text>
+
+  <line x1="400" y1="475" x2="400" y2="500" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Jacobian -->
+  <rect x="260" y="500" width="280" height="45" rx="4" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="400" y="518" text-anchor="middle" font-size="11" font-weight="bold" fill="#9d174d">计算 Jacobian J (3×4 矩阵)</text>
+  <text x="400" y="536" text-anchor="middle" font-size="9" fill="#666">Jacobian 3×4 矩阵</text>
+
+  <line x1="400" y1="545" x2="400" y2="570" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Pseudo-inverse -->
+  <rect x="260" y="570" width="280" height="45" rx="4" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="400" y="588" text-anchor="middle" font-size="11" font-weight="bold" fill="#9d174d">J⁺ = (JᵀJ)⁻¹Jᵀ 伪逆</text>
+  <text x="400" y="606" text-anchor="middle" font-size="10" fill="#666">Moore-Penrose 伪逆</text>
+
+  <line x1="400" y1="615" x2="400" y2="640" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Delta theta -->
+  <rect x="260" y="640" width="280" height="45" rx="4" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="400" y="658" text-anchor="middle" font-size="11" font-weight="bold" fill="#9d174d">Δθ = J⁺ · e · α</text>
+  <text x="400" y="676" text-anchor="middle" font-size="10" fill="#666">自适应步长 α=0.8/0.05</text>
+
+  <line x1="400" y1="685" x2="400" y2="710" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Update -->
+  <rect x="280" y="710" width="240" height="40" rx="4" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="400" y="728" text-anchor="middle" font-size="11" fill="#9d174d">θ = θ + Δθ (每步 ≤5°)</text>
+
+  <line x1="400" y1="750" x2="400" y2="770" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Check max iter -->
+  <rect x="310" y="770" width="180" height="40" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="400" y="788" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626">k ≥ max_iter?</text>
+
+  <line x1="400" y1="810" x2="400" y2="830" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="410" y="820" font-size="10" fill="#ef4444" font-weight="bold">是</text>
+
+  <!-- Fail -->
+  <rect x="310" y="830" width="180" height="40" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="400" y="848" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626">发散! 返回最近解</text>
+
+  <line x1="400" y1="870" x2="400" y2="890" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- End -->
+  <rect x="330" y="890" width="140" height="36" rx="18" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="400" y="913" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3">结束</text>
+</svg>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 540" font-family="'Microsoft YaHei','SimHei','PingFang SC','Segoe UI',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#333"/></marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/></marker>
+  </defs>
+
+  <!-- External entities -->
+  <!-- Phone/Client -->
+  <rect x="40" y="80" width="120" height="60" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="100" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#dc2626">手机/客户端</text>
+  <text x="100" y="123" text-anchor="middle" font-size="10" fill="#991b1b">浏览器 (Firefox)</text>
+
+  <!-- ESP32 WebServer -->
+  <rect x="320" y="80" width="160" height="60" rx="8" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="400" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3">ESP32 WebServer</text>
+  <text x="400" y="123" text-anchor="middle" font-size="10" fill="#6366f1">Port 80 / WS / DNS</text>
+
+  <!-- Control_Task -->
+  <rect x="580" y="80" width="170" height="60" rx="8" fill="#d1fae5" stroke="#16a34a" stroke-width="2"/>
+  <text x="665" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">Control_Task</text>
+  <text x="665" y="123" text-anchor="middle" font-size="10" fill="#047857">PID + 关节映射</text>
+
+  <!-- Servo_Task -->
+  <rect x="580" y="180" width="170" height="60" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="665" y="205" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">Servo_Task</text>
+  <text x="665" y="223" text-anchor="middle" font-size="10" fill="#b45309">I2C/PCA9685</text>
+
+  <!-- MPU6050 -->
+  <rect x="580" y="280" width="170" height="60" rx="8" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="665" y="305" text-anchor="middle" font-size="12" font-weight="bold" fill="#9d174d">MPU6050 末端</text>
+  <text x="665" y="323" text-anchor="middle" font-size="10" fill="#be185d">互补滤波</text>
+
+  <!-- ========== WebSocket (main channel) ========== -->
+  <text x="230" y="60" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563eb">WebSocket (主通道)</text>
+
+  <!-- Client → Server: IMU data -->
+  <line x1="160" y1="85" x2="320" y2="85" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="240" y="78" text-anchor="middle" font-size="9" fill="#1e40af">{command:"phone_imu",pitch:X,roll:Y}</text>
+
+  <!-- Server → Client: status push -->
+  <line x1="320" y1="105" x2="160" y2="105" stroke="#2563eb" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-blue)"/>
+  <text x="240" y="118" text-anchor="middle" font-size="9" fill="#1e40af">Status push (20Hz)</text>
+
+  <!-- Heartbeat -->
+  <line x1="160" y1="125" x2="320" y2="125" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="240" y="140" text-anchor="middle" font-size="9" fill="#64748b">Heartbeat every 3s</text>
+
+  <!-- ========== HTTP (fallback) ========== -->
+  <text x="230" y="165" text-anchor="middle" font-size="11" font-weight="bold" fill="#ef4444">HTTP GET (回退通道)</text>
+
+  <line x1="160" y1="185" x2="320" y2="185" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="240" y="180" text-anchor="middle" font-size="9" fill="#dc2626">/cmd?servo0_90</text>
+
+  <!-- ========== DNS Redirect ========== -->
+  <text x="230" y="235" text-anchor="middle" font-size="11" font-weight="bold" fill="#16a34a">DNS 重定向 (Captive Portal)</text>
+
+  <line x1="160" y1="255" x2="320" y2="255" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="240" y="250" text-anchor="middle" font-size="9" fill="#065f46">任意URL → 192.168.4.1</text>
+
+  <!-- ========== Internal flow ========== -->
+  <line x1="480" y1="85" x2="580" y2="85" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="530" y="78" text-anchor="middle" font-size="9" fill="#666">命令解析</text>
+
+  <line x1="665" y1="125" x2="665" y2="165" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="680" y="150" font-size="9" fill="#666">舵机指令</text>
+
+  <!-- Feedback loop -->
+  <line x1="580" y1="295" x2="480" y2="295" stroke="#ec4899" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="530" y="290" text-anchor="middle" font-size="9" fill="#be185d">I2C 读取</text>
+
+  <line x1="480" y1="295" x2="480" y2="145" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="480" y1="145" x2="580" y2="145" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+  <text x="490" y="230" font-size="9" fill="#be185d" transform="rotate(-90,490,230)">IMU反馈数据流</text>
+
+  <!-- Command vocabulary table -->
+  <rect x="30" y="350" width="740" height="170" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="400" y="372" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">命令词汇表 (WebSocket / HTTP 通用)</text>
+
+  <text x="50" y="395" font-size="10" fill="#333" font-weight="bold">命令</text>
+  <text x="200" y="395" font-size="10" fill="#333" font-weight="bold">说明</text>
+  <text x="450" y="395" font-size="10" fill="#333" font-weight="bold">示例</text>
+
+  <line x1="40" y1="402" x2="760" y2="402" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="50" y="420" font-size="10" fill="#333">reset</text>
+  <text x="200" y="420" font-size="10" fill="#666">全部舵机归位到90°</text>
+  <text x="450" y="420" font-size="10" fill="#999">WS: {command:"reset"} | HTTP: /cmd?reset</text>
+
+  <text x="50" y="440" font-size="10" fill="#333">wave</text>
+  <text x="200" y="440" font-size="10" fill="#666">挥手动画</text>
+  <text x="450" y="440" font-size="10" fill="#999">WS: {command:"wave"}</text>
+
+  <text x="50" y="460" font-size="10" fill="#333">mode &lt;n&gt;</text>
+  <text x="200" y="460" font-size="10" fill="#666">切换模式: 0=手动 / 1=IMU+PID</text>
+  <text x="450" y="460" font-size="10" fill="#999">WS: {command:"mode",value:1}</text>
+
+  <text x="50" y="480" font-size="10" fill="#333">servo&lt;N&gt; &lt;angle&gt;</text>
+  <text x="200" y="480" font-size="10" fill="#666">控制单舵机 (N=0-4)</text>
+  <text x="450" y="480" font-size="10" fill="#999">/cmd?servo0_90 | WS: {command:"servo",id:0,angle:90}</text>
+
+  <text x="50" y="500" font-size="10" fill="#333">kmove sx sy sz ex ey ez</text>
+  <text x="200" y="500" font-size="10" fill="#666">自定义坐标搬运</text>
+  <text x="450" y="500" font-size="10" fill="#999">/cmd?kmove_50_0_100_100_0_150</text>
+</svg>

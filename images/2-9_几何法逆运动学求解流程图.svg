@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" font-family="'Microsoft YaHei','SimHei','PingFang SC',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#333"/></marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/></marker>
+  </defs>
+
+  <!-- Start -->
+  <rect x="330" y="45" width="140" height="36" rx="18" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="400" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3">开始</text>
+
+  <line x1="400" y1="81" x2="400" y2="105" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Input -->
+  <rect x="260" y="105" width="280" height="40" rx="4" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="400" y="123" text-anchor="middle" font-size="11" fill="#1e40af">输入: 目标坐标 (X_target, Y_target, Z_target)</text>
+  <text x="400" y="140" text-anchor="middle" font-size="10" fill="#666">单位: mm, 原点: 底座中心</text>
+
+  <line x1="400" y1="145" x2="400" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Check reachable -->
+  <rect x="310" y="170" width="180" height="40" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="400" y="188" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626">目标是否在可达空间?</text>
+
+  <line x1="400" y1="210" x2="400" y2="235" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="410" y="225" font-size="10" fill="#22c55e" font-weight="bold">是</text>
+
+  <line x1="490" y1="190" x2="560" y2="190" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="565" y="194" font-size="10" fill="#ef4444" font-weight="bold">否</text>
+
+  <rect x="560" y="170" width="170" height="40" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="645" y="188" text-anchor="middle" font-size="11" fill="#dc2626">返回"不可达"</text>
+  <text x="645" y="205" text-anchor="middle" font-size="10" fill="#999">打印警告日志</text>
+
+  <!-- Step 1: Compute base angle -->
+  <rect x="260" y="235" width="280" height="45" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="400" y="255" text-anchor="middle" font-size="11" fill="#92400e">θ₀ = atan2(Y_target, X_target)</text>
+  <text x="400" y="273" text-anchor="middle" font-size="10" fill="#666">底座旋转角度</text>
+
+  <line x1="400" y1="280" x2="400" y2="305" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: Compute horizontal distance in base plane -->
+  <rect x="260" y="305" width="280" height="45" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="400" y="325" text-anchor="middle" font-size="11" fill="#92400e">r = sqrt(X² + Y²), Z' = Z - base_height</text>
+  <text x="400" y="343" text-anchor="middle" font-size="10" fill="#666">投影到基座平面</text>
+
+  <line x1="400" y1="350" x2="400" y2="375" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: Enumerate j2 -->
+  <rect x="260" y="375" width="280" height="50" rx="4" fill="#d1fae5" stroke="#16a34a" stroke-width="2"/>
+  <text x="400" y="395" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">枚举 j2 ∈ [0°, 180°]</text>
+  <text x="400" y="413" text-anchor="middle" font-size="10" fill="#666">步长 1°, 求解 j0/j1/j3 组合</text>
+
+  <line x1="400" y1="425" x2="400" y2="450" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 4: Score -->
+  <rect x="260" y="450" width="280" height="50" rx="4" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="400" y="470" text-anchor="middle" font-size="11" font-weight="bold" fill="#9d174d">评分函数</text>
+  <text x="400" y="488" text-anchor="middle" font-size="10" fill="#666">构型合规 + 运动偏好(J1≈90°)</text>
+
+  <line x1="400" y1="500" x2="400" y2="525" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Select best -->
+  <rect x="280" y="525" width="240" height="40" rx="4" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="400" y="543" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b21b6">选择最高分解 (score ≥ 7.0)</text>
+  <text x="400" y="560" text-anchor="middle" font-size="10" fill="#666">按 GRASP_A/B/ANY 偏好筛选</text>
+
+  <line x1="400" y1="565" x2="400" y2="585" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Output -->
+  <rect x="280" y="585" width="240" height="40" rx="4" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="400" y="603" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">输出: θ₀, θ₁, θ₂, θ₃</text>
+
+  <line x1="400" y1="625" x2="400" y2="645" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- End -->
+  <rect x="330" y="645" width="140" height="36" rx="18" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="400" y="668" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3">结束</text>
+</svg>
