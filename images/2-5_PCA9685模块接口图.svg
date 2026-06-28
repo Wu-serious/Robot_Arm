@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 470" font-family="'Microsoft YaHei','SimHei','PingFang SC',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#333"/></marker>
+  </defs>
+
+  <!-- PCA9685 chip -->
+  <rect x="200" y="60" width="400" height="400" rx="10" fill="#fefce8" stroke="#eab308" stroke-width="3"/>
+  <text x="400" y="90" text-anchor="middle" font-size="16" font-weight="bold" fill="#854d0e">PCA9685</text>
+  <text x="400" y="108" text-anchor="middle" font-size="11" fill="#a16207">16通道 12位 PWM 驱动器</text>
+
+  <!-- I2C Interface (left side) -->
+  <rect x="220" y="120" width="150" height="100" rx="6" fill="#fff" stroke="#eab308" stroke-width="1.5"/>
+  <text x="295" y="140" text-anchor="middle" font-size="11" font-weight="bold" fill="#854d0e">I2C 接口</text>
+  <text x="240" y="162" font-size="10" fill="#333">SDA → GPIO51</text>
+  <text x="240" y="180" font-size="10" fill="#333">SCL → GPIO52</text>
+  <text x="240" y="198" font-size="10" fill="#333">ADDR: 0x40</text>
+  <text x="240" y="213" font-size="9" fill="#666">(AD0=GND)</text>
+
+  <line x1="370" y1="170" x2="400" y2="170" stroke="#eab308" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- PWM Outputs (right side) -->
+  <rect x="480" y="120" width="100" height="200" rx="6" fill="#fff" stroke="#eab308" stroke-width="1.5"/>
+  <text x="530" y="140" text-anchor="middle" font-size="11" font-weight="bold" fill="#854d0e">PWM 输出</text>
+
+  <text x="490" y="165" font-size="10" fill="#333">PWM0 → J0 底座</text>
+  <text x="490" y="183" font-size="10" fill="#333">PWM1 → J1 肩</text>
+  <text x="490" y="201" font-size="10" fill="#333">PWM2 → J2 肘</text>
+  <text x="490" y="219" font-size="10" fill="#333">PWM3 → J3 腕</text>
+  <text x="490" y="237" font-size="10" fill="#333">PWM4 → 夹爪</text>
+  <text x="490" y="255" font-size="10" fill="#9ca3af">PWM5-15 预留</text>
+
+  <!-- Configuration (bottom) -->
+  <rect x="220" y="240" width="360" height="120" rx="6" fill="#fff" stroke="#eab308" stroke-width="1.5"/>
+  <text x="400" y="260" text-anchor="middle" font-size="11" font-weight="bold" fill="#854d0e">配置参数</text>
+
+  <text x="240" y="282" font-size="10" fill="#333">频率: 50 Hz (标准舵机频率)</text>
+  <text x="240" y="300" font-size="10" fill="#333">分辨率: 12 bit (4096 级)</text>
+  <text x="240" y="318" font-size="10" fill="#333">预分频: prescale = 121</text>
+  <text x="460" y="282" font-size="10" fill="#333">模式: 推挽输出</text>
+  <text x="460" y="300" font-size="10" fill="#333">振荡器: 内部 25 MHz</text>
+  <text x="460" y="318" font-size="10" fill="#333">供电: VCC 2.0-5.5V</text>
+
+  <!-- Key registers -->
+  <rect x="220" y="365" width="360" height="95" rx="6" fill="#fff" stroke="#eab308" stroke-width="1.5"/>
+  <text x="400" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#854d0e">关键寄存器</text>
+  <text x="400" y="405" text-anchor="middle" font-size="9" fill="#666">MODE1(0x00) | MODE2(0x01) | PRESCALE(0xFE)</text>
+  <text x="400" y="420" text-anchor="middle" font-size="9" fill="#666">LEDx_ON_L/H(0x06~0x47)</text>
+  <text x="400" y="442" text-anchor="middle" font-size="9" fill="#666">PWM寄存器: 每通道4字节(ON_L/ON_H/OFF_L/OFF_H)，16通道共64字节</text>
+</svg>

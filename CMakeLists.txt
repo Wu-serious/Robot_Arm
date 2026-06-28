@@ -6,4 +6,4 @@ set(EXTRA_COMPONENT_DIRS components/Middleware components/Hardware)
 add_compile_options(-fdiagnostics-color=always)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(00_basic)
+project(Robot_Arm)

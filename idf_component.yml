@@ -1,0 +1,11 @@
+## This file is used by ESP-IDF Component Manager to declare
+## project dependencies and their versions.
+## For more information, see:
+## https://docs.espressif.com/projects/esp-idf/en/latest/esp32p4/api/tools/cmake/idf_component.html
+
+depends:
+  ## ESP-IDF core version requirement
+  idf: ">=5.3"
+
+  ## JSON parsing library (used by WebServer for WebSocket/HTTP commands)
+  espressif/cjson: "^1.4.1"

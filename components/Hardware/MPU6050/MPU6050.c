@@ -319,9 +319,9 @@ esp_err_t MPU6050_FuseData(const mpu6050_data_t *raw_data, mpu6050_attitude_t *a
 
     // 从加速度计计算角度
     // pitch: X轴倾斜，使用Y和Z加速度计算
-    float accel_pitch = atan2(raw_data->accel_x, sqrt(raw_data->accel_y * raw_data->accel_y + raw_data->accel_z * raw_data->accel_z)) * (180.0f / 3.1415926535f);
+    float accel_pitch = atan2(raw_data->accel_x, sqrt(raw_data->accel_y * raw_data->accel_y + raw_data->accel_z * raw_data->accel_z)) * (180.0f / M_PI);
     // roll: Y轴倾斜，使用X和Z加速度计算
-    float accel_roll = atan2(raw_data->accel_y, sqrt(raw_data->accel_x * raw_data->accel_x + raw_data->accel_z * raw_data->accel_z)) * (180.0f / 3.1415926535f);
+    float accel_roll = atan2(raw_data->accel_y, sqrt(raw_data->accel_x * raw_data->accel_x + raw_data->accel_z * raw_data->accel_z)) * (180.0f / M_PI);
 
     // 互补滤波权重系数
     // alpha越接近1，越信任陀螺仪；越接近0，越信任加速度计

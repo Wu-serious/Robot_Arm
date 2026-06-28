@@ -25,13 +25,6 @@
 esp_err_t I2C_Init(void);
 
 /**
- * @brief 反初始化 I2C 驱动。
- *
- * 删除 I2C 驱动并释放相关资源。
- */
-esp_err_t I2C_Deinit(void);
-
-/**
  * @brief 向 I2C 设备写入原始数据。
  *
  * @param dev_addr 7 位从机地址。

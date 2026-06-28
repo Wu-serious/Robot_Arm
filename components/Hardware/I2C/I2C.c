@@ -41,16 +41,6 @@ esp_err_t I2C_Init(void)
 }
 
 /**
- * @brief 反初始化 I2C 驱动。
- *
- * 删除驱动并释放 I2C 控制器资源。
- */
-esp_err_t I2C_Deinit(void)
-{
-    return i2c_driver_delete(I2C_MASTER_NUM);
-}
-
-/**
  * @brief 发送 I2C 起始信号并发送从机地址。
  *
  * @param cmd I2C 命令链句柄。

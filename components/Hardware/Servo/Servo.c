@@ -19,7 +19,8 @@ esp_err_t Servo_Init(void)
         return err;
     }
     
-    for (uint8_t channel = 0; channel < 16; channel++) {
+    /* 初始化使用的 5 个舵机通道（0=底座, 1=肩, 2=肘, 3=腕, 4=夹爪） */
+    for (uint8_t channel = 0; channel < 5; channel++) {
         err = Servo_SetAngle(channel, 90.0f);
         if (err != ESP_OK) {
             ESP_LOGE(TAG, "Servo_SetAngle(%d, 90) failed: %s", channel, esp_err_to_name(err));
