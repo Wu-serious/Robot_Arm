@@ -1,6 +1,6 @@
 # 机械臂控制
 
-[English Version](./README.md)
+[English Version](./README_EN.md)
 
 ![Robot Arm](./images/3-1_系统实物正面照片.png)
 

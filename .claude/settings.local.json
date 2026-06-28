@@ -27,7 +27,11 @@
       "WebSearch",
       "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"& { . 'C:\\\\esp\\\\v5.5.4\\\\esp-idf\\\\export.ps1' 2>&1 | Out-Null; idf.py --version 2>&1 }\")",
       "Bash(cmd.exe /c \"C:\\\\esp\\\\v5.5.4\\\\esp-idf\\\\export.bat > NUL 2>&1 && cd /d d:\\\\desktop\\\\Eproject\\\\Servo_host && idf.py reconfigure 2>&1 && idf.py build 2>&1\")",
-      "Bash(\"C:\\\\\\\\Users\\\\\\\\JC\\\\\\\\.espressif\\\\\\\\python_env\\\\\\\\idf5.5_py3.14_env\\\\\\\\Scripts\\\\\\\\python.exe\" \"C:\\\\\\\\esp\\\\\\\\v5.5.4\\\\\\\\esp-idf\\\\\\\\tools\\\\\\\\idf.py\" --help)"
+      "Bash(\"C:\\\\\\\\Users\\\\\\\\JC\\\\\\\\.espressif\\\\\\\\python_env\\\\\\\\idf5.5_py3.14_env\\\\\\\\Scripts\\\\\\\\python.exe\" \"C:\\\\\\\\esp\\\\\\\\v5.5.4\\\\\\\\esp-idf\\\\\\\\tools\\\\\\\\idf.py\" --help)",
+      "Bash(rm \"images/2-2_机械臂三视图照片.png\" \"images/2-5_PCA9685模块接口图.svg\" \"images/2-6_MPU6050模块接口图.svg\" \"images/3-2_系统实物斜45°全局照片.png\" \"images/3-3_机械臂实物照片.png\" \"images/3-4_电路连接实物照片.png\" \"images/3-8_体感控制现场照片.png\" \"images/3-9_坐标规划串口日志.png\" \"images/Snipaste_2026-06-27_19-25-14.png\" \"images/Snipaste_2026-06-27_19-25-52.png\" \"images/Snipaste_2026-06-27_19-26-16.png\" \"images/Snipaste_2026-06-28_14-25-23.png\" \"images/Snipaste_2026-06-28_14-25-42.png\" \"images/Snipaste_2026-06-28_14-25-56.png\" && ls images/)"
+    ],
+    "additionalDirectories": [
+      "D:\\desktop\\Eproject\\ENDTEST\\images"
     ]
   }
 }
